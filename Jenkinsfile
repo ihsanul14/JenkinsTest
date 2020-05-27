@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'go run Tupai.go'
-                sh 'go --version'
+                echo 'Hello World'
             }
         }
     }
