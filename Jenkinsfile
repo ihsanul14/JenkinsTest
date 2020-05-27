@@ -1,9 +1,9 @@
 pipeline {
-    agent any
+    agent { dockerfile true }
     stages {
         stage('Test') {
             steps {
-                echo 'Hello World'
+                echo 'ENV Port = $PORT'
             }
         }
     }
