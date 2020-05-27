@@ -2,7 +2,7 @@ FROM golang:1.14.1
 WORKDIR /app
 
 COPY Tupai.go .
-
+RUN echo Tes
 ENV PORT 8090
 ENV DB_HOST 192.168.100.63 
 ENV DB_PORT 3306
