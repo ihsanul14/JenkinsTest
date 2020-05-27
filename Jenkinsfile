@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                echo 'ENV Port = $PORT'
+                echo 'Hello World'
+                sh 'ENV Port = $PORT'
             }
         }
     }
