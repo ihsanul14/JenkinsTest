@@ -7,7 +7,7 @@ import (
 func main() {
 	InitDb()
 	router := InitRouter()
-	router.Run(":8090")
+	router.Run(":8091")
 
 }
 
