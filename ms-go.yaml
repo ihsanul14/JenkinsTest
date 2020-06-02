@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Pod
 metadata:
   name: ms-go-deployment
   labels:
@@ -32,7 +32,7 @@ spec:
         #           key: mongo-root-password
 ---
 apiVersion: v1
-kind: Service
+kind: Pod
 metadata:
   name: ms-go-service
 spec:
