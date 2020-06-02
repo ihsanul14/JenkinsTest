@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo 'Hello World JEnkins'
 		bat 'docker build . -t ms-go-app'
-                bat 'docker run -p 8091:8091 ms-go-app'      
+                bat 'docker run -p 8091:8091 -d ms-go-app'      
 		
             }
         }
