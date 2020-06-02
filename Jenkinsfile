@@ -4,7 +4,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Hello World JEnkins'
-                bat 'dir'
+                bat 'docker build . -t ms-go-app'
                 bat 'docker run -p 8092:8091 ms-go'      
 
             }
