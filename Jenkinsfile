@@ -3,34 +3,43 @@ pipeline {
 	{
 		
     kubernetes {
-      label 'jnlp-slave'
-      defaultContainer 'jnlp'
-      yaml """
-        apiVersion: v1
-        kind: Pod
-        metadata:
-        labels:
-          component: ci
-        spec:
-          serviceAccountName: cd-jenkins
-          containers:
-          - name: node
-            image: node:12.6.0
-            command:
-            - cat
-            tty: true
-          - name: gcloud
-            image: google/cloud-sdk:latest
-            command:
-            - cat
-            tty: true
-          - name: helm
-            image: alpine/helm:2.14.0
-            command:
-            - cat
-            tty: true
-          - name: jnlp
-            image: mfahry/bri-jnlp-slave:1.7
+      yaml """apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-go-deployment
+  labels:
+    app: micros-go
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: micros-go
+  template:
+    metadata:
+      labels:
+        app: micros-go
+    spec:
+      containers:
+        - name: microsrvice-go
+          image: ihsanul14/microsergo:tesgo
+          ports:
+            - containerPort: 8091
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms-go-service
+spec:
+  selector:
+    app: micros-go
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8091
+      targetPort: 8091
+      nodePort: 30001
+
         """
     }
 	} 
