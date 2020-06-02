@@ -103,7 +103,7 @@ RUN go mod download
 
 COPY . .
 RUN echo Docker Hello
-ENV PORT 8090
+ENV PORT 8091
 ENV DB_HOST 192.168.100.63 
 ENV DB_PORT 3306
 ENV DB_USER root
