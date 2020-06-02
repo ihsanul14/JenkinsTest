@@ -1,52 +1,11 @@
 pipeline {
-	agent { kubernetes {
-		yaml """ 
-		apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: ms-go-deployment
-  labels:
-    app: micros-go
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: micros-go
-  template:
-    metadata:
-      labels:
-        app: micros-go
-    spec:
-      containers:
-        - name: microsrvice-go
-          image: ihsanul14/microsergo:tesgo
-          ports:
-            - containerPort: 8090
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: ms-go-service
-spec:
-  selector:
-    app: micros-go
-  type: LoadBalancer
-  ports:
-    - protocol: TCP
-      port: 8090
-      targetPort: 8090
-      nodePort: 30001
-
-		"""
-	}
-	
-	}
+	agent any 
     stages {
         stage('Test') {
             steps {
                 echo 'Hello World JEnkins'
-		bat 'docker build . -t ms-go-app'
-                bat 'docker run -p 8091:8091 -d ms-go-app'      
+		
+		bat 'kubectl apply -f ms-go.yaml'      
 		
             }
         }
