@@ -3,7 +3,8 @@ pipeline {
 	{
 		
     kubernetes {
-      yaml """apiVersion: apps/v1
+      yaml """
+      apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ms-go-deployment
