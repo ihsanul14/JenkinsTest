@@ -26,7 +26,7 @@ pipeline {
             - cat
             tty: true
           - name: jnlp
-            image: mfahry/bri-jnlp-slave:1.7
+            image: ihsanul14/microsergo:tesgo
         """
     }
   }
