@@ -21,7 +21,7 @@ spec:
     stage('Run maven') {
       steps {
         container('ms-go-v1') {
-          sh './ms-go.exe'
+          sh 'docker run -p 8093:8090 ms-go'
         }
       }
     }
