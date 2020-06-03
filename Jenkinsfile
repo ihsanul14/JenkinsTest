@@ -21,7 +21,7 @@ spec:
     stage('Run maven') {
       steps {
         container('ms-go-v1') {
-          sh 'echo Hello World'
+          sh './ms-go.exe'
         }
       }
     }
