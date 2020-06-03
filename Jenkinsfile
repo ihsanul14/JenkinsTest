@@ -1,26 +1,14 @@
 pipeline {
   agent {
     kubernetes {
-      yaml """
-apiVersion: v1
-kind: Pod
-metadata:
-  labels:
-    some-label: some-label-value
-spec:
-  containers:
-  - name: ms-go-v1
-    image: ihsanul14/microsergo:tesgo
-    
-"""
+      yamlFile 'ms-go.yaml'
     }
   }
   stages {
-    stage('Run maven') {
+    stage ('Test') {
       steps {
-        container('ms-go-v1') {
-          sh 'docker run -p 8093:8090 ms-go'
-        }
+        echo 'Hello World'
+        bat 'docker run -p 8091:8090 -d ms-go'
       }
     }
   }
