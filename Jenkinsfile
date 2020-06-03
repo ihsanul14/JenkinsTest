@@ -32,9 +32,12 @@ pipeline {
         """
     }
   }
-  stage ('Execute'){
-    steps {
-      echo 'Hello World'
+  stages {
+        stage('Test') {
+            steps {
+                echo 'Hello World'
+                sh 'ENV Port = $PORT'
+            }
+        }
     }
-  }
 }
