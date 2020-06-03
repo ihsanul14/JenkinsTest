@@ -13,7 +13,7 @@ spec:
     image: ihsanul14/microsergo:tesgo
     command:
     - cat
-    tty: true
+    
 """
     }
   }
