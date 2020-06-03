@@ -11,8 +11,6 @@ spec:
   containers:
   - name: ms-go-v1
     image: ihsanul14/microsergo:tesgo
-    command:
-    - cat
     
 """
     }
