@@ -32,4 +32,9 @@ pipeline {
         """
     }
   }
+  stage ('Execute'){
+    steps {
+      echo 'Hello World'
+    }
+  }
 }
