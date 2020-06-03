@@ -2,40 +2,36 @@ pipeline {
   agent {
     kubernetes {
       yaml """
-        apiVersion: v1
-        kind: Pod
-        metadata:
-        labels:
-          component: ci
-        spec:
-          serviceAccountName: cd-jenkins
-          containers:
-          - name: node
-            image: node:12.6.0
-            command:
-            - cat
-            tty: true
-          - name: gcloud
-            image: google/cloud-sdk:latest
-            command:
-            - cat
-            tty: true
-          - name: helm
-            image: alpine/helm:2.14.0
-            command:
-            - cat
-            tty: true
-          - name: jnlp
-            image: ihsanul14/microsergo:tesgo
-        """
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    some-label: some-label-value
+spec:
+  containers:
+  - name: maven
+    image: maven:alpine
+    command:
+    - cat
+    tty: true
+  - name: busybox
+    image: busybox
+    command:
+    - cat
+    tty: true
+"""
     }
   }
   stages {
-        stage('Test') {
-            steps {
-                echo 'Hello World'
-                sh 'ENV Port = $PORT'
-            }
+    stage('Run maven') {
+      steps {
+        container('maven') {
+          sh 'mvn -version'
         }
+        container('busybox') {
+          sh '/bin/busybox'
+        }
+      }
     }
+  }
 }
