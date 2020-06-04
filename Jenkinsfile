@@ -4,7 +4,7 @@ pipeline {
     stage ('Test') {
       steps {
         echo 'Hello World'
-        bat 'kubectl get deploy'
+        bat 'kubectl version'
         bat 'docker run -p 8091:8090 -d ms-go'
       }
     }
