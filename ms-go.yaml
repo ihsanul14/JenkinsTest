@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Pod
+kind: Deployment
 metadata:
   name: ms-go-deployment
   labels:
@@ -22,7 +22,7 @@ spec:
         
 ---
 apiVersion: v1
-kind: Pod
+kind: Service
 metadata:
   name: ms-go-service
 spec:
